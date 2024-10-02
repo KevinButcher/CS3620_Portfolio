@@ -1,0 +1,27 @@
+{% extends 'PortfolioDatabase/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block body %}
+    {% for project in portfolio_list %}
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <img class="card card-deck border m-1"  height="150px" width="250px" src="{{ project.project_image }}"/>
+            </div>
+            <div class="col-md-4 m-2">
+                <h3>{{ project.project_name }}</h3>
+                <h6>{{ project.project_desc }}</h6>
+            </div>
+            <div class="col-md-2 m-2">
+                <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}" class="btn btn-success">Details</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>
