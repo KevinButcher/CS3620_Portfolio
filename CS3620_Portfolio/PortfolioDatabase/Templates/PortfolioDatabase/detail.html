@@ -5,7 +5,7 @@
         {% if hobby %}
         <div class="row">
             <div class="col-md-6">
-                <img src="{{ hobby.hobby_image }}" class="card card-deck border m-1" height="300px"/>
+                <img src="{{ hobby.hobby_image }}" class="card card-deck border m-1" height="300px" width="300px"/>
             </div>
             <div class="col-md-5 m-1">
                 <h1>{{ hobby.hobby_name }}</h1>
@@ -15,7 +15,7 @@
         {% elif portfolio %}
         <div class="row">
             <div class="col-md-6 m-1">
-                <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px"/>
+                <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
             </div>
             <div class="col-md-5 m-1">
                 <h1>{{ portfolio.project_name }}</h1>
