@@ -1,0 +1,7 @@
+{% extends 'PortfolioDatabase/base.html' %}
+{% block body %}
+<h1 class="text-center">{{ user.username }}</h1>
+<div class="row d-flex justify-content-center">
+    <img src="{{ user.profile.image.url }}" width="250px">
+</div>
+{% endblock %}

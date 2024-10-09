@@ -8,7 +8,9 @@
 </head>
 <body>
     {% block body %}
-        <h1 class="text-center">{{ contact }}</h1>
+    <div>
+        <h1 class="text-center">{{ contact }} or <a href="{% url 'PortfolioDatabase:contactMe' %}" class="btn btn-info">Contact Me!</a></h1>
+    </div>
     {% endblock %}
 </body>
 </html>

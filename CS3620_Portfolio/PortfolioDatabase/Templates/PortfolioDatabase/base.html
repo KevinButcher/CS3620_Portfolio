@@ -10,14 +10,32 @@
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body class="bg-dark text-white-50">
-    <nav class="navbar bg-white">
-        <a href="{% url 'PortfolioDatabase:index' %}" class="navbar-brand">Kevin's Portfolio</a>
+    <nav class="navbar bg-secondary">
+        <a href="{% url 'PortfolioDatabase:index' %}" class="navbar-brand text-light">Kevin's Portfolio</a>
         <div class="navbar">
-            <a href="{% url 'PortfolioDatabase:hobbies' %}" class="nav-item nav-link">Hobbies</a>
-            <a href="{% url 'PortfolioDatabase:portfolio' %}" class="nav-item nav-link">Portfolio</a>
-            <a href="{% url 'PortfolioDatabase:contact' %}" class="nav-item nav-link">Contact</a>
+            <a href="{% url 'PortfolioDatabase:hobbies' %}" class="nav-item nav-link text-light">Hobbies</a>
+            <a href="{% url 'PortfolioDatabase:portfolio' %}" class="nav-item nav-link text-light">Portfolio</a>
+            <a href="{% url 'PortfolioDatabase:contact' %}" class="nav-item nav-link text-light">Contact</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="nav-item nav-link text-light">Profile</a>
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="nav-item nav-link" type="submit">
+                        Logout
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-item nav-link text-light">Login</a>
+            {% endif %}
         </div>
     </nav>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     {% block body %}
     {% endblock %}

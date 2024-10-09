@@ -17,4 +17,13 @@ class Portfolio(models.Model):
     project_name = models.CharField(max_length=200)
     project_desc = models.CharField(max_length=2000)
     project_image = models.CharField(max_length=500, default="https://cdn-icons-png.freepik.com/512/12238/12238054.png")
+
+class Contact(models.Model):
+    def __str__(self):
+        return self.contact_name + ": " + self.contact_message + "\n"
+
+    contact_name = models.CharField(max_length=200)
+    contact_email = models.CharField(max_length=200)
+    contact_message = models.CharField(max_length=2000)
+
     

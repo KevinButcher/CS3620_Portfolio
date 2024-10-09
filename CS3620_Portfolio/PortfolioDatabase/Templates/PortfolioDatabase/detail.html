@@ -10,6 +10,7 @@
             <div class="col-md-5 m-1">
                 <h1>{{ hobby.hobby_name }}</h1>
                 <h2>{{ hobby.hobby_desc }}</h2>
+                <a href="{% url 'PortfolioDatabase:deleteHobby' hobby.id %}">Delete</a>
             </div>
         </div>
         {% elif portfolio %}
@@ -20,6 +21,7 @@
             <div class="col-md-5 m-1">
                 <h1>{{ portfolio.project_name }}</h1>
                 <h2>{{ portfolio.project_desc }}</h2>
+                <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}">Delete</a>
             </div>
         </div>
         {% endif %}

@@ -18,7 +18,11 @@
                 <h6>{{ project.project_desc }}</h6>
             </div>
             <div class="col-md-2 m-2">
-                <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}" class="btn btn-success">Details</a>
+                {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'PortfolioDatabase:createPortfolio' %}" class="btn btn-success">Add</a>
+                <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}" class="btn btn-info">Details</a>
+                <a href="{% url 'PortfolioDatabase:updatePortfolio' project.id %}" class="btn btn-primary">Edit</a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

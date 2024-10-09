@@ -1,0 +1,14 @@
+{% extends 'PortfolioDatabase/base.html' %}
+
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    {% if hobby %}
+        <h2>Are you sure you want to delete {{ hobby.hobby_name }}</h2>
+        <button type="submit">Confirm</button>
+    {% elif portfolio %}
+        <h2>Are you sure you want to delete {{ project.project_name }}</h2>
+        <button type="submit">Confirm</button>
+    {% endif %}
+</form>
+{% endblock %}

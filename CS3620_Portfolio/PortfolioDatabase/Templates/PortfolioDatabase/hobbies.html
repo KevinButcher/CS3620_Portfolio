@@ -18,7 +18,11 @@
                 <h6>{{ hobby.hobby_desc }}</h6>
             </div>
             <div class="col-md-2 m-2">
-                <a href="{% url 'PortfolioDatabase:hobbyDetail' hobby.id %}" class="btn btn-success">Details</a>
+                {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'PortfolioDatabase:createHobby' %}" class="btn btn-success">Add</a>
+                <a href="{% url 'PortfolioDatabase:hobbyDetail' hobby.id %}" class="btn btn-info">Details</a>
+                <a href="{% url 'PortfolioDatabase:updateHobby' hobby.id %}" class="btn btn-primary">Edit</a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

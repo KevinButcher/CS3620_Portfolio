@@ -11,4 +11,11 @@ urlpatterns = [
     path('hobbies/', views.hobbies, name="hobbies"),
     path('portfolio/', views.portfolio, name="portfolio"),
     path('contact/', views.contact, name="contact"),
+    path('addproject', views.createPortfolio, name="createPortfolio"),
+    path('addhobby', views.createHobby, name="createHobby"),
+    path('updateproject/<int:Portfolio_id>', views.updatePortfolio, name="updatePortfolio"),
+    path('updatehobby/<int:Hobby_id>', views.updateHobby, name="updateHobby"),
+    path('deleteproject/<int:Portfolio_id>', views.deletePortfolio, name="deletePortfolio"),
+    path('deletehobby/<int:Hobby_id>', views.deleteHobby, name="deleteHobby"),
+    path('contactme/', views.contactMe, name="contactMe"),
 ]
