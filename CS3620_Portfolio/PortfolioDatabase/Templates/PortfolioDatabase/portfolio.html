@@ -15,6 +15,9 @@
             </div>
             <div class="col-md-4 m-2">
                 <h3>{{ project.project_name }}</h3>
+                {% if project.project_url %}
+                    <h6><a href={{ project.project_url }}>{{ project.project_url }}</a></h3>
+                {% endif %}
                 <h6>{{ project.project_desc }}</h6>
             </div>
             <div class="col-md-2 m-2">

@@ -17,6 +17,7 @@ class Portfolio(models.Model):
     project_name = models.CharField(max_length=200)
     project_desc = models.CharField(max_length=2000)
     project_image = models.CharField(max_length=500, default="https://cdn-icons-png.freepik.com/512/12238/12238054.png")
+    project_url = models.URLField(max_length=400, null=True, blank=True)
 
 class Contact(models.Model):
     def __str__(self):
