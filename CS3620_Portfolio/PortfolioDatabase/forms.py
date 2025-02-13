@@ -4,7 +4,7 @@ from .models import Portfolio, Hobby, Contact
 class PortfolioForm(forms.ModelForm):
     class Meta:
         model = Portfolio
-        fields = ['project_name', 'project_desc', 'project_image']
+        fields = ['project_name', 'project_desc', 'project_image', 'project_url']
 
 class HobbyForm(forms.ModelForm):
     class Meta:
