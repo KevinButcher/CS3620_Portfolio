@@ -21,7 +21,9 @@
             <div class="col-md-5 m-1">
                 <h1>{{ portfolio.project_name }}</h1>
                 <h2>{{ portfolio.project_desc }}</h2>
+                {% if user.is_authenticated and user.is_superuser %}
                 <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}">Delete</a>
+                {% endif %}
             </div>
         </div>
         {% endif %}

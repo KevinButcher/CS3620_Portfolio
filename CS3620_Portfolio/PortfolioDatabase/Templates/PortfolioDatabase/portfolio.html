@@ -8,27 +8,51 @@
 </head>
 <body>
     {% block body %}
-    {% for project in portfolio_list %}
-        <div class="row">
-            <div class="col-md-3 offset-md-2">
-                <img class="card card-deck border m-1"  height="150px" width="250px" src="{{ project.project_image }}"/>
-            </div>
-            <div class="col-md-4 m-2">
-                <h3>{{ project.project_name }}</h3>
-                {% if project.project_url %}
-                    <h6><a href={{ project.project_url }}>{{ project.project_url }}</a></h3>
-                {% endif %}
-                <h6>{{ project.project_desc }}</h6>
-            </div>
-            <div class="col-md-2 m-2">
-                {% if user.is_authenticated and user.is_superuser %}
-                <a href="{% url 'PortfolioDatabase:createPortfolio' %}" class="btn btn-success">Add</a>
-                <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}" class="btn btn-info">Details</a>
-                <a href="{% url 'PortfolioDatabase:updatePortfolio' project.id %}" class="btn btn-primary">Edit</a>
-                {% endif %}
-            </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            {% for project in portfolio_list %}
+                <div class="col mb-4 mt-2">
+                    <div class="card bg-secondary h-100">
+                        <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}">
+                            <img class="card-img-top img-fluid" src="{{ project.project_image }}" alt="{{ project.project_name }}" style="aspect-ratio: 16/9;">
+                        </a>
+                        <div class="card-body bg-secondary text-light d-flex flex-column">
+                            <a href="{% url 'PortfolioDatabase:portfolioDetail' project.id %}" class="text-light">
+                                <h5 class="card-title">{{ project.project_name }}</h5></a>
+                            <div class="mt-auto">
+                                {% if user.is_authenticated and user.is_superuser %}
+                                    <a href="{% url 'PortfolioDatabase:updatePortfolio' project.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{% url 'PortfolioDatabase:deletePortfolio' project.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-footer bg-dark">
+                            {% comment %} <div>
+                            {% if project.project_url %}
+                                <a href="{{ project.project_url }}" class="text-white">{{ project.project_url }}</a>
+                            {% endif %}
+                            </div> {% endcomment %}
+                            <div>
+                            {% if project.tags.all %}
+                            {% for tag in project.tags.all %}
+                                <span class="badge badge-pill badge-warning mx-1">{{ tag.name }}</span>
+                            {% endfor %}
+                            {% else %}
+                                <span class="badge badge-pill badge-warning">No tags</span>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+    
+    
+    
+    {% if user.is_authenticated and user.is_superuser %}
+    <a href="{% url 'PortfolioDatabase:createPortfolio' %}" class="btn btn-success">Add</a>
+    {% endif %}
     {% endblock %}
 </body>
 </html>
