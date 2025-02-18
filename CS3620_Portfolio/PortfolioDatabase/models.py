@@ -1,4 +1,5 @@
 from django.db import models
+from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 
@@ -25,12 +26,12 @@ class Portfolio(models.Model):
     project_desc = models.CharField(max_length=2000)
     project_image = models.CharField(max_length=500, default="https://cdn-icons-png.freepik.com/512/12238/12238054.png")
     project_url = models.URLField(max_length=400, null=True, blank=True)
-    project_video = models.URLField(max_length=500, blank=True, null=True)
+    project_video = EmbedVideoField(null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name='projects', blank=True)
 
 class Skill(models.Model):
     def __str__(self):
-        return self.name
+        return self.skill_name
     
     skill_name = models.CharField(max_length=100, unique=True)
 

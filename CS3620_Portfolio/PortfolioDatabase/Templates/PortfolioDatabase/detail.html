@@ -1,13 +1,14 @@
 {% extends 'PortfolioDatabase/base.html' %}
+{% load embed_video_tags %}
 
 {% block body %}
     <div class="container">
         {% if hobby %}
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <img src="{{ hobby.hobby_image }}" class="card card-deck border m-1" height="300px" width="300px"/>
             </div>
-            <div class="col-md-5 m-1">
+            <div class="col-md-5 m-1 mb-3">
                 <h1>{{ hobby.hobby_name }}</h1>
                 <h2>{{ hobby.hobby_desc }}</h2>
                 <a href="{% url 'PortfolioDatabase:deleteHobby' hobby.id %}">Delete</a>
@@ -15,12 +16,21 @@
         </div>
         {% elif portfolio %}
         <div class="row">
-            <div class="col-md-6 m-1">
+            <div class="col-md-6 m-1 mb-3">
                 <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
             </div>
-            <div class="col-md-5 m-1">
+            <div class="col-md-5 m-1 mb-3">
                 <h1>{{ portfolio.project_name }}</h1>
                 <h2>{{ portfolio.project_desc }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="embed-responsive embed-responsive-16by9">
+                    {% video portfolio.project_video %}
+                </div>
+            </div>
+            <div class="col-md-5 mb-3">
                 {% if user.is_authenticated and user.is_superuser %}
                 <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}">Delete</a>
                 {% endif %}
