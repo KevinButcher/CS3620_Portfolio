@@ -16,12 +16,19 @@
         </div>
         {% elif portfolio %}
         <div class="row">
-            <div class="col-md-6 m-1 mb-3">
+            <div class="col-md-6 m-1 mb-3 mt-3">
                 <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
+                {% if portfolio.tags.all %}
+                {% for tag in portfolio.tags.all %}
+                    <span class="badge badge-pill badge-warning mx-1">{{ tag.name }}</span>
+                {% endfor %}
+                {% else %}
+                    <span class="badge badge-pill badge-warning">No tags</span>
+                {% endif %}
             </div>
-            <div class="col-md-5 m-1 mb-3">
-                <h1>{{ portfolio.project_name }}</h1>
-                <h2>{{ portfolio.project_desc }}</h2>
+            <div class="col-md-5 m-1 mb-3 mt-3 overflow-auto" style="height: 300px">
+                <h1><u>{{ portfolio.project_name }}</u></h1>
+                <p>{{ portfolio.project_desc }}</p>
             </div>
         </div>
         <div class="row">
@@ -32,7 +39,7 @@
             </div>
             <div class="col-md-5 mb-3">
                 {% if user.is_authenticated and user.is_superuser %}
-                <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}">Delete</a>
+                <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}" class="btn btn-danger btn-sm">Delete</a>
                 {% endif %}
             </div>
         </div>

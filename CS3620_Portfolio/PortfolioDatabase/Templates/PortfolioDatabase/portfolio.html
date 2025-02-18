@@ -27,11 +27,6 @@
                             </div>
                         </div>
                         <div class="card-footer bg-dark">
-                            {% comment %} <div>
-                            {% if project.project_url %}
-                                <a href="{{ project.project_url }}" class="text-white">{{ project.project_url }}</a>
-                            {% endif %}
-                            </div> {% endcomment %}
                             <div>
                             {% if project.tags.all %}
                             {% for tag in project.tags.all %}
@@ -46,13 +41,10 @@
                 </div>
             {% endfor %}
         </div>
+        {% if user.is_authenticated and user.is_superuser %}
+        <a href="{% url 'PortfolioDatabase:createPortfolio' %}" class="btn btn-success float-right">Add</a>
+        {% endif %}
     </div>
-    
-    
-    
-    {% if user.is_authenticated and user.is_superuser %}
-    <a href="{% url 'PortfolioDatabase:createPortfolio' %}" class="btn btn-success">Add</a>
-    {% endif %}
     {% endblock %}
 </body>
 </html>
