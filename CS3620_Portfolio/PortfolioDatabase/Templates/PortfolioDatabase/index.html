@@ -10,12 +10,14 @@
 <body>
     {% block body %}
         <h1 class="text-center"><strong>Welcome to my Django portfolio!</strong></h1>
-        <h3 class="text-center">My name is Kevin Butcher!</h3>
+        <h3 class="text-center mt-3">My name is <span class="text-warning">Kevin Butcher</span>!</h3>
         <h5 class="text-center">I am a senior at Weber State University. I am currently employed with Intermountain Health as a 
             Central Processing Senior Tech.</h5>
         <div class="row d-flex justify-content-center">
             <div class="">
-                <img class="card card-deck border m-1" height="500px" src="{% static 'PortfolioDatabase/Business_Shot_2024.jpg' %}"/>
+                <img class="card card-deck border m-1" height="250px" src="{% static 'PortfolioDatabase/Business_Shot_2024.jpg' %}"/>
+                <a href="" class="mr-5 text-warning" target="_blank">Github</a>
+                <a href="" class="ml-5 text-warning" target="_blank">LinkedIn</a>
             </div>
             {% comment %} <div class="col-md-3 m-2">
                 <h2>{{ intro }}</h2>

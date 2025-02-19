@@ -18,6 +18,10 @@
         <div class="row">
             <div class="col-md-6 m-1 mb-3 mt-3">
                 <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
+            </div>
+            <div class="col-md-5 m-1 mb-3 mt-3 overflow-auto" style="height: 300px">
+                <h1><u>{{ portfolio.project_name }}</u></h1>
+                <p>{{ portfolio.project_desc }}</p>
                 {% if portfolio.tags.all %}
                 {% for tag in portfolio.tags.all %}
                     <span class="badge badge-pill badge-warning mx-1">{{ tag.name }}</span>
@@ -26,10 +30,6 @@
                     <span class="badge badge-pill badge-warning">No tags</span>
                 {% endif %}
             </div>
-            <div class="col-md-5 m-1 mb-3 mt-3 overflow-auto" style="height: 300px">
-                <h1><u>{{ portfolio.project_name }}</u></h1>
-                <p>{{ portfolio.project_desc }}</p>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -37,10 +37,15 @@
                     {% video portfolio.project_video %}
                 </div>
             </div>
-            <div class="col-md-5 mb-3">
-                {% if user.is_authenticated and user.is_superuser %}
-                <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}" class="btn btn-danger btn-sm">Delete</a>
-                {% endif %}
+            <div class="col-md-5 mb-3 d-flex gap-2">
+                <div class="col-md-5">
+                    <a href="{{ portfolio.project_url }}" class="btn btn-success btn-md" target="_blank">Check out the code on GitHub!</a>
+                </div>
+                <div class="col-md-4">
+                    {% if user.is_authenticated and user.is_superuser %}
+                    <a href="{% url 'PortfolioDatabase:deletePortfolio' portfolio.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         {% endif %}
