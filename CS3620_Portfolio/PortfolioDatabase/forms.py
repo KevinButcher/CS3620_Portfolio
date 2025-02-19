@@ -11,10 +11,10 @@ class PortfolioForm(forms.ModelForm):
         model = Portfolio
         fields = ['project_name', 'project_desc', 'project_image', 'project_url', 'project_video', 'tags']
 
-class HobbyForm(forms.ModelForm):
-    class Meta:
-        model = Hobby
-        fields = ['hobby_name', 'hobby_desc', 'hobby_image']
+# class HobbyForm(forms.ModelForm):
+#     class Meta:
+#         model = Hobby
+#         fields = ['hobby_name', 'hobby_desc', 'hobby_image']
 
 class ContactForm(forms.ModelForm):
     class Meta:

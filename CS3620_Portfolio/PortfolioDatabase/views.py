@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Hobby, Portfolio
 from django.template import loader
-from .forms import PortfolioForm, HobbyForm, ContactForm
+from .forms import PortfolioForm, ContactForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -21,13 +21,13 @@ def index(request):
                         #"\nthree years now while also working a full time job (sadly, unrelated" 
                         #"\nto my major). I am also  married married with a 7 year old son.")
 
-def  hobbies(request):
-    hobby_list = Hobby.objects.all()
-    context = {
-        'hobby_list': hobby_list
-    }
-    return render(request, 'PortfolioDatabase/hobbies.html', context)
-    #return HttpResponse(hobby_list)
+# def  hobbies(request):
+#     hobby_list = Hobby.objects.all()
+#     context = {
+#         'hobby_list': hobby_list
+#     }
+#     return render(request, 'PortfolioDatabase/hobbies.html', context)
+#     #return HttpResponse(hobby_list)
 
 def portfolio(request):
     portfolio_list = Portfolio.objects.all()
@@ -44,12 +44,12 @@ def contact(request):
     return render(request, 'PortfolioDatabase/contact.html', context)
     #return HttpResponse("Contact me: kevinbutcher@mail.weber.edu")
 
-def hobbyDetail(request, Hobby_id):
-    hobby = Hobby.objects.get(pk=Hobby_id)
-    context = {
-        'hobby': hobby,
-    }
-    return render(request, 'PortfolioDatabase/detail.html', context)
+# def hobbyDetail(request, Hobby_id):
+#     hobby = Hobby.objects.get(pk=Hobby_id)
+#     context = {
+#         'hobby': hobby,
+#     }
+#     return render(request, 'PortfolioDatabase/detail.html', context)
 
 def portfolioDetail(request, Portfolio_id):
     portfolio = Portfolio.objects.get(pk=Portfolio_id)
@@ -82,15 +82,15 @@ def createPortfolio(request):
     
     return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form})
 
-@login_required
-def createHobby(request):
-    form = HobbyForm(request.POST or None)
+# @login_required
+# def createHobby(request):
+#     form = HobbyForm(request.POST or None)
 
-    if form.is_valid():
-        form.save()
-        return redirect('PortfolioDatabase:hobbies')
+#     if form.is_valid():
+#         form.save()
+#         return redirect('PortfolioDatabase:hobbies')
     
-    return render(request, 'PortfolioDatabase/hobby-form.html', {'form': form})
+#     return render(request, 'PortfolioDatabase/hobby-form.html', {'form': form})
 
 @login_required
 def updatePortfolio(request, Portfolio_id):
@@ -103,16 +103,16 @@ def updatePortfolio(request, Portfolio_id):
     
     return render(request, 'PortfolioDatabase/portfolio-form.html', {'form': form, 'portfolio': portfolio})
 
-@login_required
-def updateHobby(request, Hobby_id):
-    hobby = Hobby.objects.get(pk = Hobby_id)
-    form = HobbyForm(request.POST or None, instance=hobby)
+# @login_required
+# def updateHobby(request, Hobby_id):
+#     hobby = Hobby.objects.get(pk = Hobby_id)
+#     form = HobbyForm(request.POST or None, instance=hobby)
 
-    if form.is_valid():
-        form.save()
-        return redirect('PortfolioDatabase:hobbies')
+#     if form.is_valid():
+#         form.save()
+#         return redirect('PortfolioDatabase:hobbies')
     
-    return render(request, 'PortfolioDatabase/hobby-form.html', {'form': form, 'hobby': hobby})
+#     return render(request, 'PortfolioDatabase/hobby-form.html', {'form': form, 'hobby': hobby})
 
 @login_required
 def deletePortfolio(request, Portfolio_id):
@@ -124,13 +124,13 @@ def deletePortfolio(request, Portfolio_id):
     
     return render(request, 'PortfolioDatabase/item-delete.html', {'portfolio': portfolio})
 
-@login_required
-def deleteHobby(request, Hobby_id):
-    hobby = Hobby.objects.get(pk=Hobby_id)
+# @login_required
+# def deleteHobby(request, Hobby_id):
+#     hobby = Hobby.objects.get(pk=Hobby_id)
 
-    if request.method == 'POST':
-        hobby.delete()
-        return redirect('PortfolioDatabase:hobbies')
+#     if request.method == 'POST':
+#         hobby.delete()
+#         return redirect('PortfolioDatabase:hobbies')
     
-    return render(request, 'PortfolioDatabase/item-delete.html', {'hobby': hobby})
+#     return render(request, 'PortfolioDatabase/item-delete.html', {'hobby': hobby})
 

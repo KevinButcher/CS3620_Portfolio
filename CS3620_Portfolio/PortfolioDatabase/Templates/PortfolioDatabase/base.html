@@ -13,7 +13,8 @@
     <nav class="navbar bg-secondary">
         <a href="{% url 'PortfolioDatabase:index' %}" class="navbar-brand text-light">Kevin's Portfolio</a>
         <div class="navbar">
-            <a href="{% url 'PortfolioDatabase:hobbies' %}" class="nav-item nav-link text-light">Hobbies</a>
+            {% comment %} <a href="{% url 'PortfolioDatabase:hobbies' %}" class="nav-item nav-link text-light">Hobbies</a> {% endcomment %}
+            <a href="{% url 'PortfolioDatabase:index' %}" class="nav-item nav-link text-light">Home</a>
             <a href="{% url 'PortfolioDatabase:portfolio' %}" class="nav-item nav-link text-light">Portfolio</a>
             <a href="{% url 'PortfolioDatabase:contact' %}" class="nav-item nav-link text-light">Contact</a>
             {% if user.is_authenticated %}

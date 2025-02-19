@@ -3,7 +3,7 @@
 
 {% block body %}
     <div class="container">
-        {% if hobby %}
+        {% comment %} {% if hobby %}
         <div class="row">
             <div class="col-md-6 mb-3">
                 <img src="{{ hobby.hobby_image }}" class="card card-deck border m-1" height="300px" width="300px"/>
@@ -13,8 +13,8 @@
                 <h2>{{ hobby.hobby_desc }}</h2>
                 <a href="{% url 'PortfolioDatabase:deleteHobby' hobby.id %}">Delete</a>
             </div>
-        </div>
-        {% elif portfolio %}
+        </div> {% endcomment %}
+        {% if portfolio %}
         <div class="row">
             <div class="col-md-6 m-1 mb-3 mt-3">
                 <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
