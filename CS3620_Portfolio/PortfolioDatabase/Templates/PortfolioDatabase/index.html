@@ -15,9 +15,16 @@
             Central Processing Senior Tech.</h5>
         <div class="row d-flex justify-content-center">
             <div class="">
-                <img class="card card-deck border m-1" height="250px" src="{% static 'PortfolioDatabase/Business_Shot_2024.jpg' %}"/>
-                <a href="" class="mr-5 text-warning" target="_blank">Github</a>
-                <a href="" class="ml-5 text-warning" target="_blank">LinkedIn</a>
+                <img class="card card-deck border m-1" height="250px" src="{% static 'PortfolioDatabase/Business_Shot_2024.jpg' %}"
+                    alt="Business Shot 2024"/>
+                <a href="" class="mr-3 text-warning" target="_blank">
+                    <img src="{% static 'PortfolioDatabase/GitHubLogo.png' %}" height="17px" class="h-4 w-auto" alt="GitHub Logo"/>
+                    <span class="ms-1">Github</span>
+                </a>
+                <a href="" class="ml-3 text-warning" target="_blank">
+                    <img src="{% static 'PortfolioDatabase/LinkedInlogo.png' %}" height="17px" class="h-4 w-auto" alt="LinkedIn Logo"/>
+                    <span class="ms-1">LinkedIn</span>
+                </a>
             </div>
             {% comment %} <div class="col-md-3 m-2">
                 <h2>{{ intro }}</h2>

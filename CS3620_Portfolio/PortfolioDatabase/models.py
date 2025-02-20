@@ -24,16 +24,11 @@ class Portfolio(models.Model):
 
     project_name = models.CharField(max_length=200)
     project_desc = models.CharField(max_length=2000)
+    # project_image = models.ImageField(default='genericproject.jpg', upload_to='project_pictures')
     project_image = models.CharField(max_length=500, default="https://cdn-icons-png.freepik.com/512/12238/12238054.png")
     project_url = models.URLField(max_length=400, null=True, blank=True)
     project_video = EmbedVideoField(null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name='projects', blank=True)
-
-class Skill(models.Model):
-    def __str__(self):
-        return self.skill_name
-    
-    skill_name = models.CharField(max_length=100, unique=True)
 
 class Contact(models.Model):
     def __str__(self):
@@ -44,3 +39,9 @@ class Contact(models.Model):
     contact_subject = models.CharField(max_length=200, default="default subject")
     contact_message = models.CharField(max_length=2000)
     sent_at = models.DateTimeField(auto_now_add=True)
+
+class Skill(models.Model):
+    def __str__(self):
+        return self.skill_name
+    
+    skill_name = models.CharField(max_length=100, unique=True)

@@ -7,7 +7,7 @@ from .models import Hobby, Contact, Portfolio, Tag
 class AdminVideo(AdminVideoMixin, admin.ModelAdmin):
     pass
 
-admin.site.register(Hobby)
+# admin.site.register(Hobby)
 admin.site.register(Portfolio, AdminVideo)
 admin.site.register(Contact)
 admin.site.register(Tag)
