@@ -1,5 +1,7 @@
 from . import views
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = 'PortfolioDatabase'
 urlpatterns = [
@@ -18,4 +20,4 @@ urlpatterns = [
     path('deleteproject/<int:Portfolio_id>', views.deletePortfolio, name="deletePortfolio"),
     # path('deletehobby/<int:Hobby_id>', views.deleteHobby, name="deleteHobby"),
     path('contactme/', views.contactMe, name="contactMe"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -17,7 +17,7 @@
         {% if portfolio %}
         <div class="row">
             <div class="col-md-6 m-1 mb-3 mt-3">
-                <img src="{{ portfolio.project_image }}" class="card card-deck border" height="300px" width="300px"/>
+                <img src="{{ portfolio.project_image.url }}" class="card card-deck border" height="300px" width="300px"/>
             </div>
             <div class="col-md-5 m-1 mb-3 mt-3 overflow-auto" style="height: 300px">
                 <h1><u>{{ portfolio.project_name }}</u></h1>

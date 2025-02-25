@@ -95,7 +95,7 @@ def createPortfolio(request):
 @login_required
 def updatePortfolio(request, Portfolio_id):
     portfolio = Portfolio.objects.get(pk=Portfolio_id)
-    form = PortfolioForm(request.POST or None, instance=portfolio)
+    form = PortfolioForm(request.POST or None, request.FILES or None, instance=portfolio)
 
     if form.is_valid():
         form.save()
